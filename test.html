@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Test Runner</title>
+	</head>
+	<link rel="stylesheet" href="style.css" />
+	<style>
+		/* floating animation for button */
+		@keyframes float {
+			0% {
+				transform: translateY(0px);
+			}
+			50% {
+				transform: translateY(15px);
+			}
+			100% {
+				transform: translateY(0px);
+			}
+		}
+		/* saas style button */
+		#test-runner {
+			background-color: #4caf50;
+			border: none;
+			color: white;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+
+			margin-top: 20px;
+			padding: 10px;
+
+			cursor: pointer;
+			animation: float 2s infinite;
+		}
+	</style>
+	<body>
+		<input type="text" id="filterInput" placeholder="Type to filter..." />
+		<ul id="dataList">
+			<li>Alice</li>
+			<li>Bob</li>
+			<li>Charlie</li>
+		</ul>
+		<button id="test-runner" onclick="runTest()">Run Test</button>
+
+		<script src="./script.js"></script>
+		<script>
+			function runTest() {
+				// Setup - similar to your Jest test
+
+				// Create a new input event
+				const input = document.getElementById('filterInput');
+				const inputEvent = new Event('keyup', {
+					bubbles: true,
+					cancelable: true,
+				});
+				input.value = 'Alice';
+				input.dispatchEvent(inputEvent);
+
+				// "Test" logic
+				setTimeout(() => {
+					// Delay to allow DOM updates
+					const visibleItems = Array.from(
+						document.getElementById('dataList').children
+					).filter((item) => item.style.display !== 'none');
+
+					if (
+						visibleItems.length === 1 &&
+						visibleItems[0].textContent === 'Alice'
+					) {
+						//create a light green div with the text "Test Passed"
+						const doc = document.createElement('div');
+						doc.textContent = 'Test Passed';
+						doc.style.backgroundColor = 'lightgreen';
+						doc.style.padding = '10px';
+						doc.style.margin = '10px';
+						doc.style.border = '1px solid green';
+						document.body.appendChild(doc);
+
+						setTimeout(() => {
+							doc.remove();
+						}, 5500);
+					} else {
+						//create a light red div with the text "Test Failed"
+						const doc = document.createElement('div');
+						doc.textContent = 'Test Failed';
+						doc.style.backgroundColor = 'lightcoral';
+						doc.style.padding = '10px';
+						doc.style.margin = '10px';
+						doc.style.border = '1px solid red';
+						document.body.appendChild(doc);
+						setTimeout(() => {
+							doc.remove();
+						}, 5500);
+					}
+				}, 500);
+			}
+		</script>
+	</body>
+</html>
