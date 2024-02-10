@@ -11,7 +11,9 @@ One problem...
 
 It doesn't work yet!
 
-<div style="position: relative; padding-bottom: 64.98194945848375%; height: 0;"><iframe src="https://www.loom.com/embed/a6afe8f1cdf0483cb16018c1d5d310ff?sid=e640cc68-e688-4754-9b03-542a5409ea12" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+### Video Walkthrough:
+
+https://www.loom.com/share/a6afe8f1cdf0483cb16018c1d5d310ff?sid=55aeff4a-9185-424a-80f6-416deaf917c5
 
 ### Your Task
 
